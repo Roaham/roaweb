@@ -12,6 +12,11 @@ permissions:
 jobs:
   build_site:
     runs-on: ubuntu-latest
+    # ESTO LE DICE A GITHUB QUE TU PROYECTO ESTÁ DENTRO DE LA CARPETA ROAWEB
+    defaults:
+      run:
+        working-directory: roaweb
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +35,8 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/'
+          # IMPORTANTE: Aquí también especificamos la carpeta roaweb
+          path: 'roaweb/build/'
 
   deploy:
     needs: build_site

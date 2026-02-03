@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: 'main' # Si tu rama principal se llama master, cambia main por master
+    branches: 'main'
 
 permissions:
   contents: read
@@ -12,6 +12,11 @@ permissions:
 jobs:
   build_site:
     runs-on: ubuntu-latest
+    # ESTO LE DICE A GITHUB QUE TU PROYECTO ESTÁ DENTRO DE LA CARPETA ROAWEB
+    defaults:
+      run:
+        working-directory: roaweb
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,10 +25,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-package-lock
 
       - name: Build
         run: npm run build
@@ -31,7 +35,8 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/' # Aquí es donde el adapter-static deja los archivos
+          # IMPORTANTE: Aquí también especificamos la carpeta roaweb
+          path: 'roaweb/build/'
 
   deploy:
     needs: build_site

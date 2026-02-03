@@ -1,9 +1,11 @@
 <script>
+  import { base } from '$app/paths';
+
   const profile = {
     name: "Roaham",
     bio: "Hola — soy Roaham. Me gusta la cyberseguridad, programar, la historia, leer y los videojueguitos",
     email: "hyperoa@proton.me",
-    favorites: ["Python", "Java", "CSS", "HTML", "JavaScript", "SQL", "Svelte"]
+    knowledge: ["Python", "Java", "CSS", "HTML", "JavaScript", "SQL", "Svelte"]
   };
 
   const socialLinks = [
@@ -19,14 +21,14 @@
 
   <div class="about-grid">
     <div class="avatar">
-      <img src="/lain.jpg" alt="Roaham" />
+      <img src="{base}/lain.jpg" alt="Roaham" />
     </div>
     
     <div class="bio">
       <p>{profile.bio}</p>
 
       <ul>
-        <li><span class="label">Knowledge:</span> {profile.favorites.join(', ')}</li>
+        <li><span class="label">Knowledge:</span> {profile.knowledge.join(', ')}</li>
         <li><span class="label">Contact via -></span> 
           <a href="mailto:{profile.email}" class="proj-link">{profile.email}</a>
         </li>
@@ -34,7 +36,7 @@
         <li class="social-wrapper">
           {#each socialLinks as { name, href, icon }}
             <a {href} target="_blank" rel="noopener noreferrer" title={name} class="social-btn">
-              <img src={icon} alt={name} />
+              <img src="{base}{icon}" alt={name} />
             </a>
           {/each}
         </li>

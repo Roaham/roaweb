@@ -4,7 +4,7 @@
   <div class="projects-grid">
     <article class="proj-card">
       <h3>Roaham's Web</h3>
-      <p>This web that u r seeing</p>
+      <p>This web that you're seeing right now, its sad</p>
       <a class="proj-link" href="https://github.com/Roaham/roaweb">Open</a>
     </article>
 

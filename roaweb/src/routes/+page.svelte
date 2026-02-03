@@ -1,3 +1,11 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<section class="home">
+  <div class="hero">
+    <h1 class="title">Roaham | Roa</h1>
+    <p class="subtitle">A simple web about me, a simple dev student</p>
+
+    <div class="actions">
+      <a class="btn" href="/projects">See Projects</a>
+      <a class="btn ghost" href="/about">About Me</a>
+    </div>
+  </div>
+</section>

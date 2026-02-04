@@ -20,18 +20,37 @@ html, body, #svelte{
   height:100%;
 }
 
-body{
-  margin:0;
-  font-family:'Press Start 2P', monospace;
-  background:
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  background-color: var(--bg);
+  color: var(--muted);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
     radial-gradient(
-      ellipse at 10% 10%,
-      rgba(110,231,255,0.03),
-      transparent 10%
+      circle at 50% 50%, 
+      rgba(15, 21, 48, 0.5) 0%, 
+      rgba(11, 11, 18, 1) 100%
     ),
-    var(--bg);
-  color:var(--muted);
-  -webkit-font-smoothing:antialiased;
+
+    linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(164, 16, 181, 0.696) 50%
+    );
+  background-size: 100% 100%, 100% 4px;
+  animation: scrollLines 10s linear infinite;
 }
 
 .ps1-shell{
@@ -55,10 +74,19 @@ body{
 }
 
 .ps1-nav .logo{
-  color:var(--accent);
-  font-size:14px;
-  text-decoration: none;
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:6px;
+  transition:all .22s;
 }
+
+.ps1-nav .logo:hover{
+  color:var(--accent);
+  transform:translateY(-2px);
+  text-shadow:0 0 8px rgba(110,231,255,0.12);
+}
+
 
 .ps1-nav .links{
   display:flex;
@@ -83,6 +111,7 @@ body{
 .content{
   flex:1;
   display:flex;
+  flex-direction: column;
   align-items:center;
   justify-content:center;
   padding:40px;
@@ -97,6 +126,20 @@ body{
 }
 
 /* HOME */
+
+.website-name{
+    background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+  font-size: 3rem;
+}
+
 .home{
   display:flex;
   gap:40px;
@@ -305,4 +348,11 @@ body{
 
 .social-btn:hover img {
   filter: grayscale(0%) opacity(1) drop-shadow(0 0 8px var(--accent));
+}
+
+/* KEYFRAMES */
+
+@keyframes scrollLines {
+  from { background-position: 0 0; }
+  to { background-position: 0 100px; }
 }

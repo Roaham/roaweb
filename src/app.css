@@ -40,17 +40,18 @@ body::before {
   z-index: -1;
   background: 
     radial-gradient(
-      circle at 50% 50%, 
+      circle at center,
       rgba(15, 21, 48, 0.5) 0%, 
       rgba(11, 11, 18, 1) 100%
     ),
 
     linear-gradient(
+      to top,
       rgba(18, 16, 16, 0) 50%, 
       rgba(164, 16, 181, 0.696) 50%
     );
   background-size: 100% 100%, 100% 4px;
-  animation: scrollLines 10s linear infinite;
+  animation: skylines 10s linear infinite;
 }
 
 .ps1-shell{
@@ -121,7 +122,7 @@ body::before {
 .ps1-footer{
   text-align:center;
   padding:14px 0;
-  color:#1f2a44;
+  color:var(--accent);
   font-size:12px;
 }
 
@@ -352,7 +353,7 @@ body::before {
 
 /* KEYFRAMES */
 
-@keyframes scrollLines {
+@keyframes skylines {
   from { background-position: 0 0; }
   to { background-position: 0 100px; }
 }
